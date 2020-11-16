@@ -1,4 +1,22 @@
+
 making some changes in readme
+=======
+
+## sneha
+
+# Online Forum - Team 9
+
+### What to do ? 
+
+1. Backend routes:
+    - create routes for posts / comments -> 'Post&Comments part'
+2. Frontend theme:
+    - Main style/Theme/ Home page
+    - Post page style
+        - create post style, buttons, etc..
+    - Link between Front and back
+        - Do something when click on button (create, delete, etc..)
+
 
 
 # My Online Forum
