@@ -1,3 +1,16 @@
+
+### What to do ? 
+
+1. Backend routes:
+    - create routes for posts / comments
+    - 'Post&Comments part'
+2. Frontend theme:
+    2.1: Main style/Theme/ Home page
+    2.2: Post page style
+        - create post style, buttons, etc..
+    2.3: Link between Front and back
+        - Do something when click on button (create, delete, etc..)
+
 # My Online Forum
 
 Your task for this part of the module will be to take the Spring + React template
