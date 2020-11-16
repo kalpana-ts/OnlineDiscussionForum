@@ -1,4 +1,3 @@
-
 making some changes in readme
 =======
 
@@ -9,13 +8,14 @@ making some changes in readme
 ### What to do ? 
 
 1. Backend routes:
-    - create routes for posts / comments -> 'Post&Comments part'
+    - create routes for posts / comments -> 'Post&Comments part' - Radha
 2. Frontend theme:
-    - Main style/Theme/ Home page
-    - Post page style
-        - create post style, buttons, etc..
+    - Theme/ Home page - Sneha
+    - Navbar/ Main style - 
+    - Post page style 
+        - create post style, buttons, etc.. - Kalpana
     - Link between Front and back
-        - Do something when click on button (create, delete, etc..)
+        - Do something when click on button (create, delete, etc..) - Jeremy
 
 
 
