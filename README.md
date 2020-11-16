@@ -1,4 +1,7 @@
 
+making some changes in readme
+=======
+
 ## sneha
 
 # Online Forum - Team 9
@@ -13,6 +16,7 @@
         - create post style, buttons, etc..
     - Link between Front and back
         - Do something when click on button (create, delete, etc..)
+
 
 
 # My Online Forum
