@@ -15,24 +15,26 @@ function Post(props) {
                 <div className="card-body">
                     <p>
                         Title : {props.post.postTitle} <br/>
-                        Post : {props.post.postBody}
+                        Post : {props.post.postBody} <br/>
+                        WrittenBy : {props.post.user.name}
                     </p>
-                
-                {/*
+
+                    {/*
                     comments.map((comment) =>
                         <Comment />
                     )
                 */}
-                <button 
-                    className="btn btn-danger mr-sm-2" 
-                    onClick={() => props.deletePost(props.post.id)}
-                >Delete</button> 
-                
-                {/* <Link to={'/posts/' + id}>  Do you mean a link to see the entire post ? 
+                    {(props.post.user.name === props.user.name)?
+                    <button
+                        className="btn btn-danger mr-sm-2"
+                        onClick={() => props.deletePost(props.post.id)}
+                    >Delete</button> : null }
+
+                    {/* <Link to={'/posts/' + id}>  Do you mean a link to see the entire post ?
                 Maybe we don't need to make a new API call, but we can definitely open it into a new window
                 Look at bootstrap 'Modal', it is pretty cool and you don't need a new page */}
-                <button className="btn btn-primary"> View</button>
-                {/* </Link> */}
+                    <button className="btn btn-primary"> View</button>
+                    {/* </Link> */}
                 </div>
             </div>
         </div>
@@ -40,4 +42,3 @@ function Post(props) {
 }
 
 export default Post;
-

@@ -47,7 +47,7 @@ function PostForm(props){
                 />
             </div>
             <div className="form-group">
-                <button className="btn btn-primary" onClick={createPost}>Post</button>
+                <button className="btn btn-primary  " onClick={createPost}>Post</button>
             </div>
         </div>
     );
