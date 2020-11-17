@@ -14,19 +14,19 @@ public class PostController {
     @Autowired
     private PostService postService;
 
-  /*  @GetMapping("")
-    public List<Post> getAll(@RequestParam(required = false) Long topicId) {
-        if (topicId == null) {
-            return articleService.getAll();
+   @GetMapping("")
+    public List<Post> getAll(@RequestParam(required = false) Long userId) {
+        if (userId == null) {
+            return postService.getAll();
         } else {
-            return articleService.getAllByTopicId(topicId);
+            return postService.getAllByUserId(userId);
         }
-    }*/
+    }
 
-    @GetMapping("")
+  /*  @GetMapping("")
     public List<Post> getAll() {
         return postService.getAll();
-    }
+    }*/
 
 
     //Get a specific post by its id
