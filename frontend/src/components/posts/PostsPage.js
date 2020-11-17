@@ -1,23 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PostsApi from '../../api/PostsApi';
 
 import PostForm from "./PostForm";
 import Post from './Post';
 
-function PostsPage() {
+function PostsPage({user}) {
 
-    // Make temporary posts
-    const postsForTrying = [ {id: 1, text: "post 1"}, {id: 2, text: "post 2"}]
+    const [ posts, setPosts ] = useState([]); 
 
-    const [ posts, setPosts ] = useState(postsForTrying) // Replace it by [] when ready
-
-    // Need to do it once, inside a UesEffect
     function getAllPosts() {
         PostsApi.getAllPosts()
-            .then((data) => {
-                setPosts(data);
+            .then((res) => {
+                setPosts(res.data);
             })
     }
+
+    // Load all Posts once, when opening Post Page
+    useEffect(() => {
+        getAllPosts();
+    }, [])
 
     // Will be linked to user in a second time
     function deletePost(postId) {
@@ -29,12 +30,12 @@ function PostsPage() {
 
     return (
         <div>
-            <PostForm posts={posts} setPosts={setPosts}/>
+            <PostForm posts={posts} getAllPosts={getAllPosts} user={user}/>
             <div>
                 <h2>List of posts</h2>
-                {
+                { posts.length === 0 ? "No posts yet" :
                     posts.map((post) => 
-                        <Post key={post.id} post={post}/>
+                        <Post key={post.id} post={post} deletePost={deletePost}/>
                     )
                 }
             </div>
