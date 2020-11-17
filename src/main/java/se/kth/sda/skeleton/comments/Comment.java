@@ -1,5 +1,7 @@
 package se.kth.sda.skeleton.comments;
 
+import se.kth.sda.skeleton.posts.Post;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,6 +11,17 @@ public class Comment {
     private Long id;
     @Column(columnDefinition = "TEXT")
     private String commentBody;
+
+    @ManyToOne
+    private Post post;
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
 
     public Comment(Long id, String commentBody) {
         this.id = id;

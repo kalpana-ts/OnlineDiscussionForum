@@ -34,8 +34,8 @@ public class CommentService {
     }
 
 
-//    public List<Post> getAllByTopicId(Long topicId) {
-//        return repo.findAllByTopicsId(topicId);
-//    }
+    public List<Comment> getAllByPostId(Long postId) {
+        return repo.findAllByPostId(postId);
+    }
 
 }

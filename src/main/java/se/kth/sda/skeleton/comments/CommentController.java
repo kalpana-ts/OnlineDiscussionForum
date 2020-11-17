@@ -14,19 +14,19 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
-  /*  @GetMapping("")
-    public List<Post> getAll(@RequestParam(required = false) Long topicId) {
-        if (topicId == null) {
-            return articleService.getAll();
-        } else {
-            return articleService.getAllByTopicId(topicId);
-        }
-    }*/
-
     @GetMapping("")
+    public List<Comment> getAll(@RequestParam(required = false) Long postId) {
+        if (postId == null) {
+            return commentService.getAll();
+        } else {
+            return commentService.getAllByPostId(postId);
+        }
+    }
+
+   /* @GetMapping("")
     public List<Comment> getAll() {
         return commentService.getAll();
-    }
+    }*/
 
 
     //Get a specific post by its id

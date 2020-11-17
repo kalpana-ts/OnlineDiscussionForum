@@ -1,6 +1,10 @@
 package se.kth.sda.skeleton.posts;
 
+import se.kth.sda.skeleton.comments.Comment;
+import se.kth.sda.skeleton.user.User;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Post {
@@ -10,6 +14,12 @@ public class Post {
     private String postTitle;
     @Column(columnDefinition = "TEXT")
     private String postBody;
+
+    @OneToMany
+    private List<Comment> comments;
+
+//    @ManyToOne
+//    private User user;
 
     public Post(Long id, String postTitle, String postBody) {
         this.id = id;
