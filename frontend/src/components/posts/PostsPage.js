@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import PostsApi from '../../api/PostsApi'
 
+import PostForm from "./PostForm";
+
 function PostsPage() {
 
     const [ posts, setPosts ] = useState([])
@@ -36,9 +38,13 @@ function PostsPage() {
             })
     }
 
+    const [posts, setPosts] = useState([]);
+    const [email, setEmail] = useState("");
+
 
     return (
         <div>
+            <PostForm onSubmit={(posts)=>create(posts,email)}/>
         </div>
     );
 }
