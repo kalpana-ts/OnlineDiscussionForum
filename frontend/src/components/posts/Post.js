@@ -1,5 +1,5 @@
-// import React from "react";
-// import { Link } from "react-router-dom";
+import React ,{useState} from "react";
+import { Link } from "react-router-dom";
 
 // function Post({ post, email }) {
 //   const id = post.id;
@@ -16,10 +16,8 @@
 //   );
 // }
 
-// export default Post;
 
-import React, { useState } from 'react'
-// inmport Comment from '../comment/Comment'
+
 
 
 // A single post, here you can create your post as you want it to be
@@ -33,7 +31,7 @@ function Post(props) {
         <div className="card mt-2">
           <div className="card-body">
                 <p>
-                Post : {props.post.text}
+                Post : {props.post.postBody}
                 </p>
             
             {/*
@@ -42,9 +40,10 @@ function Post(props) {
                     <Comment />
                 )
             */}
-             <button className="btn btn-danger" onClick="">Delete</button> 
+             <button className="btn btn-danger mr-sm-2" onClick="">Delete</button> 
+             
              {/* <Link to={'/posts/' + id}> */}
-                <button className="btn btn-primary">View</button>
+                <button className="btn btn-primary"> View</button>
                 {/* </Link> */}
              </div>
         </div>
