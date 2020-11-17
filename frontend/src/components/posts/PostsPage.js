@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import PostsApi from '../../api/PostsApi';
-
 import PostForm from "./PostForm";
 import Post from './Post';
 
-function PostsPage({user}) {
-
-    const [ posts, setPosts ] = useState([]); 
+function PostsPage() {
+    
+    const [ posts, setPosts ] = useState([]) 
 
     function getAllPosts() {
         PostsApi.getAllPosts()
-            .then((res) => {
-                setPosts(res.data);
+            .then((data) => {
+                setPosts(data.data);
             })
+            .catch((error) => console.log(error))
     }
 
     // Load all Posts once, when opening Post Page
@@ -36,11 +36,17 @@ function PostsPage({user}) {
                 { posts.length === 0 ? "No posts yet" :
                     posts.map((post) => 
                         <Post key={post.id} post={post} deletePost={deletePost}/>
+                    )}
+                <div className="PostPage">
+                <PostForm posts={posts} getAllPosts={getAllPosts}/>
+
+                { posts.map((post) => 
+                        <Post key={post.id} post={post}/>
                     )
                 }
+                </div>
             </div>
         </div>
     );
 }
-
 export default PostsPage;
