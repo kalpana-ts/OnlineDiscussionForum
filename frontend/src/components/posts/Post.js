@@ -4,8 +4,7 @@ import React ,{useState} from "react";
 // A single post, here you can create your post as you want it to be
 function Post(props) {
 
-    // Comments will come from backend : 'GetAllCommentByPostId'
-    const [ comments, setComments] = useState([]);
+    const [ comments, setComments] = useState(props.post.comments); // All comment for this post
 
     return (
         <div>
@@ -15,20 +14,25 @@ function Post(props) {
             <div className="card mt-2">
                 <div className="card-body">
                     <p>
-                    Post : {props.post.postBody}
+                        Title : {props.post.postTitle} <br/>
+                        Post : {props.post.postBody}
                     </p>
                 
                 {/*
-                    Same way as Post we can bring a list of comments for each post
                     comments.map((comment) =>
                         <Comment />
                     )
                 */}
-                <button className="btn btn-danger mr-sm-2" onClick="">Delete</button> 
+                <button 
+                    className="btn btn-danger mr-sm-2" 
+                    onClick={() => props.deletePost(props.post.id)}
+                >Delete</button> 
                 
-                {/* <Link to={'/posts/' + id}> */}
-                    <button className="btn btn-primary"> View</button>
-                    {/* </Link> */}
+                {/* <Link to={'/posts/' + id}>  Do you mean a link to see the entire post ? 
+                Maybe we don't need to make a new API call, but we can definitely open it into a new window
+                Look at bootstrap 'Modal', it is pretty cool and you don't need a new page */}
+                <button className="btn btn-primary"> View</button>
+                {/* </Link> */}
                 </div>
             </div>
         </div>

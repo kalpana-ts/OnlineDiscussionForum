@@ -6,45 +6,48 @@ import PostsApi from '../../api/PostsApi';
 function PostForm(props){
 
     // Can add using the same way a title or anything else if we want
-    const [text, setText] = useState("");
+    const [body, setBody] = useState("");
+    const [title, setTitle] = useState("");
 
     function createPost() {
-        if (text === "") { return;} // We don't want to send an empty post
+        if (body === "") { return;} // We don't want to send an empty post
+
         const newPost = {
-            postTitle: "title", // Random id for now
-            postBody: text
+            postTitle: title, 
+            postBody: body,
+            user: props.user,
+            comments: [
+                {
+                    commentBody: 'test'
+                }
+            ]
         }; 
-        
         
         PostsApi.createPost(newPost)
             .then(() => {
                 props.getAllPosts(); // to refresh the list immediately
-                setText("");  // Clear the Form
+                setBody("");  // Clear the Form
+                setTitle("");
             })
-    }
-        
-        
-        // Waiting for routes - No need that at the end
-        
-
-        // Uncomment when routes are ready.
-        // PostsApi.createPost(newPost)
-        //     .then(() => {
-        //         getAllPosts(); // to refresh the list immediately
-        //         setText("");  // Clear the Form
-        //     })
-    
+    }    
 
     return (
         <div className="card">
-            <p className="card-title">What's on your mind, {props.user.name}?</p>
+            <p className="card-title">Create a new Post</p>
             <div className="form-group">
-            <textarea className="form-control"
-                    value={text}
-                    onChange={event => setText(event.target.value)}/>
+                <input className="form-control"
+                    placeholder="Title"
+                    value={title}
+                    onChange={event => setTitle(event.target.value)}
+                />
+                <textarea className="form-control"
+                    placeholder={`What's on your mind, ${props.user.name}?`}
+                    value={body}
+                    onChange={event => setBody(event.target.value)}
+                />
             </div>
             <div className="form-group">
-            <button className="btn btn-primary" onClick={createPost}>Post</button>
+                <button className="btn btn-primary" onClick={createPost}>Post</button>
             </div>
         </div>
     );

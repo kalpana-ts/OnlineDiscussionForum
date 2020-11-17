@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Auth from "../../services/Auth";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 
 function LoginPage() {
+
+    const [registerFormOpen, setRegisterFormOpen] = useState(false)
+
     const login = async (loginData) => {
         const loginSuccess = await Auth.login(loginData);
         if (!loginSuccess) {
@@ -29,13 +32,23 @@ function LoginPage() {
 
                     <div className="col-md-6">
                         <div className="row">
-                            <div className="col-12  strong-shadow">
+                            <div className="col-12 strong-shadow">
                                 <LoginForm onSubmit={login} />
                             </div>
 
-                            <div className="col-12 mt-4">
-                                <RegisterForm onSubmit={register} />
-                            </div>
+                            { registerFormOpen ?
+                                <div className="col-12 mt-4">
+                                    <RegisterForm onSubmit={register} />
+                                </div>
+                                :
+                                <div className="col-12 mt-4">
+                                    Not yet a community member?
+                                    <span
+                                        className="btn mb-1"
+                                        onClick={() => {setRegisterFormOpen(true)}}
+                                    >Sign up</span>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>

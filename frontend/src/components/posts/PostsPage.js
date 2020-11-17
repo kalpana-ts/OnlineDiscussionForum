@@ -1,26 +1,27 @@
 import React, { useEffect, useState } from "react";
 import PostsApi from '../../api/PostsApi';
+
+// Components
 import PostForm from "./PostForm";
 import Post from './Post';
 
-function PostsPage() {
+function PostsPage({user}) {
     
-    const [ posts, setPosts ] = useState([]) 
+    const [ posts, setPosts ] = useState([]) // Will contain all posts
 
     function getAllPosts() {
         PostsApi.getAllPosts()
             .then((data) => {
                 setPosts(data.data);
             })
-            .catch((error) => console.log(error))
     }
 
-    // Load all Posts once, when opening Post Page
+    // Load all Posts once, when opening Page
     useEffect(() => {
         getAllPosts();
     }, [])
 
-    // Will be linked to user in a second time
+    // Delete post is at this level because if we delete the post directly inside itself, it will generate issues
     function deletePost(postId) {
         PostsApi.deletePost(postId)
             .then(() => {
@@ -28,23 +29,17 @@ function PostsPage() {
             })
     }
 
+    console.log(posts)
+
     return (
-        <div>
+        <div className="PostPage">
             <PostForm posts={posts} getAllPosts={getAllPosts} user={user}/>
             <div>
-                <h2>List of posts</h2>
                 { posts.length === 0 ? "No posts yet" :
                     posts.map((post) => 
-                        <Post key={post.id} post={post} deletePost={deletePost}/>
-                    )}
-                <div className="PostPage">
-                <PostForm posts={posts} getAllPosts={getAllPosts}/>
-
-                { posts.map((post) => 
-                        <Post key={post.id} post={post}/>
+                        <Post key={post.id} post={post} user={user} deletePost={deletePost}/>
                     )
                 }
-                </div>
             </div>
         </div>
     );
