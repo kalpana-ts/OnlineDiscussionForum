@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     BrowserRouter as Router,
     Switch,
@@ -9,6 +9,7 @@ import {
 import './App.css';
 
 import Auth from './services/Auth';
+import UserApi from './api/UserApi';
 import Navbar from "./components/layout/Navbar";
 
 // Import pages
@@ -18,32 +19,47 @@ import PostsPage from "./components/posts/PostsPage";
 import ChatPage from './components/chat/ChatPage';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
-  Auth.bindLoggedInStateSetter(setLoggedIn);
-  
-  const loggedInRouter = (
-            <Router>
-                <Navbar onLogout={() => Auth.logout()} />
+    const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
+    Auth.bindLoggedInStateSetter(setLoggedIn);
 
-                <div className="container mt-5">
-                    <Switch>
-                        <Route path="/posts">
-                            <PostsPage/>
-                        </Route>
+    const [user, setUser] = useState({});
+    const userMail = Auth.getUserMail();
 
-                        <Route path="/chat">
-                            <ChatPage/>
-                        </Route>
+    // Store user informations when logged: can acces user mail, name, Id
+    useEffect(() => {
+        function getUserByMail() {
+            UserApi.getUserByMail(userMail)
+                .then((res) => {
+                    setUser(res.data)
+                })
+        }
 
-                        <Route path="/">
-                          <HomePage/>
-                        </Route>
-                    </Switch>
-                </div>
-            </Router>
-  );
+        userMail !== null && getUserByMail();
+    }, [userMail])
 
-  return (loggedIn ? loggedInRouter : <LoginPage/>);
+    const loggedInRouter = (
+        <Router>
+            <Navbar onLogout={() => Auth.logout()} />
+
+            <div className="container mt-5">
+                <Switch>
+                    <Route path="/posts">
+                        <PostsPage user={user} />
+                    </Route>
+
+                    <Route path="/chat">
+                        <ChatPage user={user} />
+                    </Route>
+
+                    <Route path="/">
+                        <HomePage user={user} />
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
+    );
+
+    return (loggedIn ? loggedInRouter : <LoginPage />);
 }
 
 export default App;
