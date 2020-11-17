@@ -1,12 +1,17 @@
 import React, { useState } from "react";
-import PostsApi from '../../api/PostsApi'
+import PostsApi from '../../api/PostsApi';
 
 import PostForm from "./PostForm";
+import Post from './Post';
 
 function PostsPage() {
 
-    const [ posts, setPosts ] = useState([])
+    // Make temporary posts
+    const postsForTrying = [ {id: 1, text: "post 1"}, {id: 2, text: "post 2"}]
 
+    const [ posts, setPosts ] = useState(postsForTrying) // Replace it by [] when ready
+
+    // Need to do it once, inside a UesEffect
     function getAllPosts() {
         PostsApi.getAllPosts()
             .then((data) => {
@@ -14,14 +19,7 @@ function PostsPage() {
             })
     }
 
-    function createPost() {
-        const newPost = {}; // Need to create this object with 'craeting form' values
-        PostsApi.createPost(newPost)
-            .then(() => {
-                getAllPosts(); // to refresh the list immediately
-            })
-    }
-
+    // Will be linked to user in a second time
     function deletePost(postId) {
         PostsApi.deletePost(postId)
             .then(() => {
@@ -29,22 +27,17 @@ function PostsPage() {
             })
     }
 
-    // Not a priority - What User Interface for updating post ?
-    function updatePost() {
-        const updatedPost = {}; // Need to create this object with 'updating form' values
-        PostsApi.updatePost(updatedPost)
-            .then(() => {
-                getAllPosts(); // to refresh the list immediately
-            })
-    }
-
-    const [posts, setPosts] = useState([]);
-    const [email, setEmail] = useState("");
-
-
     return (
         <div>
-            <PostForm onSubmit={(posts)=>create(posts,email)}/>
+            <PostForm posts={posts} setPosts={setPosts}/>
+            <div>
+                <h2>List of posts</h2>
+                {
+                    posts.map((post) => 
+                        <Post key={post.id} post={post}/>
+                    )
+                }
+            </div>
         </div>
     );
 }
