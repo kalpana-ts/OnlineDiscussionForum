@@ -1,6 +1,7 @@
 package se.kth.sda.skeleton.comments;
 
 import se.kth.sda.skeleton.posts.Post;
+import se.kth.sda.skeleton.user.User;
 
 import javax.persistence.*;
 
@@ -15,12 +16,23 @@ public class Comment {
     @ManyToOne
     private Post post;
 
+    @ManyToOne
+    private User user;
+
     public Post getPost() {
         return post;
     }
 
     public void setPost(Post post) {
         this.post = post;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Comment(Long id, String commentBody) {

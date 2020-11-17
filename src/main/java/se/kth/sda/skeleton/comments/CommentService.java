@@ -2,6 +2,7 @@ package se.kth.sda.skeleton.comments;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import se.kth.sda.skeleton.posts.Post;
 
 import java.util.List;
 import java.util.Optional;
@@ -36,6 +37,10 @@ public class CommentService {
 
     public List<Comment> getAllByPostId(Long postId) {
         return repo.findAllByPostId(postId);
+    }
+
+    public List<Comment> getAllByUserId(Long userId) {
+        return repo.findAllByUserId(userId);
     }
 
 }

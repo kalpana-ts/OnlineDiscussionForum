@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import se.kth.sda.skeleton.posts.Post;
 
 import java.util.List;
 
@@ -14,8 +15,8 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
-    @GetMapping("")
-    public List<Comment> getAll(@RequestParam(required = false) Long postId) {
+    @GetMapping("/postid")
+    public List<Comment> getAllPostId(@RequestParam(required = false) Long postId) {
         if (postId == null) {
             return commentService.getAll();
         } else {
@@ -23,10 +24,18 @@ public class CommentController {
         }
     }
 
-   /* @GetMapping("")
+    @GetMapping("/userid")
+    public List<Comment> getAllByUserId(@RequestParam(required = false) Long userId) {
+        if (userId == null) {
+            return commentService.getAll();
+        } else {
+            return commentService.getAllByUserId(userId);
+        }
+    }
+    @GetMapping("")
     public List<Comment> getAll() {
         return commentService.getAll();
-    }*/
+    }
 
 
     //Get a specific post by its id

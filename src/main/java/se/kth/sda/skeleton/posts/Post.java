@@ -18,8 +18,16 @@ public class Post {
     @OneToMany
     private List<Comment> comments;
 
-//    @ManyToOne
-//    private User user;
+    @ManyToOne
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Post(Long id, String postTitle, String postBody) {
         this.id = id;

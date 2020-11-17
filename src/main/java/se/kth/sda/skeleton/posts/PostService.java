@@ -34,7 +34,7 @@ public class PostService {
     }
 
 
-//    public List<Post> getAllByTopicId(Long topicId) {
-//        return repo.findAllByTopicsId(topicId);
-//    }
+ public List<Post> getAllByUserId(Long userId) {
+        return repo.findAllByUserId(userId);
+    }
 }
