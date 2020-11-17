@@ -1,6 +1,6 @@
 body {
   min-height: 100vh;
-  background: linear-gradient(to right, #2c3e50, #3498db);
+  background: linear-gradient(to right, #f9d36b, #f9d36b);
 }
 
 .App {
@@ -12,7 +12,7 @@ body {
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #c55533;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
