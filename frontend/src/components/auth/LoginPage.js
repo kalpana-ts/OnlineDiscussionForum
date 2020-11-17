@@ -3,6 +3,8 @@ import Auth from "../../services/Auth";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 
+import './Login.css';
+
 function LoginPage() {
 
     const [registerFormOpen, setRegisterFormOpen] = useState(false)
@@ -25,9 +27,9 @@ function LoginPage() {
         <div className="wrapper">
             <div className="container">
                 <div className="row mt-4">
-                    <div className="col-md-6 " style={{ color: "white" }}>
-                        <h1>SDA</h1>
-                        <p>Starter template</p>
+                    <div className="col-md-6" style={{  }}>
+                        <h1>Community</h1>
+                        <p></p>
                     </div>
 
                     <div className="col-md-6">
