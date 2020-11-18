@@ -4,6 +4,7 @@ import CommentsPage from "../comments/CommentsPage";
 
 // A single post, here you can create your post as you want it to be
 function Post(props) {
+  console.log(props.post);
 
     return (
         <>
@@ -15,7 +16,13 @@ function Post(props) {
                     {props.post.postBody}
                 </div>
                 <div className="text-right">
-                    {props.post.user.name === props.user.name ? (
+                <button type="button" className="btn btn-light"
+                    onClick={()=>props.likePost(props.post)}
+                >Like :{props.post.likes}</button>
+                <button type="button" className="btn btn-light"
+                    onClick={()=>props.disLikePost(props.post)}
+                >Dislike :{props.post.disLikes}</button>
+                    {props.post.user.email === props.user.email ? (
                         <button
                             className="btn btn-danger mr-sm-2"
                             onClick={() => props.deletePost(props.post.id)}

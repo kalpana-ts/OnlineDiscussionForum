@@ -40,11 +40,43 @@ function PostsPage({user}) {
         getAllPosts();
     }, [])
 
+    
+
     // Delete post is at this level because if we delete the post directly inside itself, it will generate issues
     function deletePost(postId) {
         PostsApi.deletePost(postId)
             .then(() => {
                 getAllPosts(); // to refresh the list immediately
+            })
+    }
+
+    function likePost(post){
+        const newPost = {
+            id: post.id,
+            postTitle: post.postTitle, 
+            postBody: post.postBody,
+            likes: post.likes + 1,
+            disLikes: post.disLikes,
+            user: post.user    
+        }
+
+        PostsApi.updatePost(newPost)
+            .then(() => {
+                getAllPosts();
+            })
+    }
+    function disLikePost(post){
+        const newPost = {
+            id: post.id,
+            postTitle: post.postTitle, 
+            postBody: post.postBody,
+            likes: post.likes,
+            disLikes: post.disLikes + 1,
+            user: post.user    
+        }
+        PostsApi.updatePost(newPost)
+            .then(() => {
+                getAllPosts();
             })
     }
 
@@ -73,7 +105,8 @@ function PostsPage({user}) {
                     posts
                         .filter((post) => allPostsOn ? true : post.user.id === user.id )
                         .map((post) => 
-                        <Post key={post.id} post={post} user={user} deletePost={deletePost}/>
+                        <Post key={post.id} post={post} user={user} deletePost={deletePost} 
+                        likePost={likePost} disLikePost={disLikePost}/>
                     )
                 }
             </div>

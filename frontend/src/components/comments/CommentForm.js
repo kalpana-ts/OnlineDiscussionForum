@@ -22,7 +22,7 @@ function CommentForm(props) {
     return (
         <div className="card mt-3">
         <div className="card-title bg-primary text-white m-0 p-1">
-            Write you comment Here
+            Write your comment Here
         </div>
         <div className="card-body">
             <textarea 

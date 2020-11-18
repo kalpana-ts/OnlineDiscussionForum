@@ -15,12 +15,9 @@ function PostForm(props){
         const newPost = {
             postTitle: title, 
             postBody: body,
-            user: props.user,
-            comments: [
-                {
-                    commentBody: 'test'
-                }
-            ]
+            likes: 0,
+            disLikes: 0,
+            user: props.user
         }; 
         
         PostsApi.createPost(newPost)
