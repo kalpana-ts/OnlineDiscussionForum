@@ -6,7 +6,7 @@ class CommentApi {
     }
 
     getAllCommentsByPostId(postId) {
-        return Api.get('/comments/'+postId);
+        return Api.get(`/comments/postid?postId=${postId}`);
     }
 
     getCommentById(id) {

@@ -15,6 +15,13 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
+    // @GetMapping("/{postId}")
+    // public List<Comment> getAllPostId(@PathVariable Long postId) {
+     
+    //         return commentService.getAllByPostId(postId);
+        
+    }
+
     @GetMapping("/postid")
     public List<Comment> getAllPostId(@RequestParam(required = false) Long postId) {
         if (postId == null) {
@@ -23,6 +30,7 @@ public class CommentController {
             return commentService.getAllByPostId(postId);
         }
     }
+
 
     @GetMapping("/userid")
     public List<Comment> getAllByUserId(@RequestParam(required = false) Long userId) {

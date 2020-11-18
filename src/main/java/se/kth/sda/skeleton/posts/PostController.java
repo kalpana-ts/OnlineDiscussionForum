@@ -23,12 +23,6 @@ public class PostController {
         }
     }
 
-  /*  @GetMapping("")
-    public List<Post> getAll() {
-        return postService.getAll();
-    }*/
-
-
     //Get a specific post by its id
     @GetMapping("/{id}")
     public Post getById(@PathVariable Long id) {

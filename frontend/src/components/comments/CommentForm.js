@@ -7,18 +7,18 @@ function CommentForm(props) {
     function createComment() {
         if (body === "") { return;}
         // Invoke the passed in event callback
+        
         const newComment = { 
             commentBody: body,
             user: props.user,
             post: props.post
         };
-
+        console.log(newComment);
         CommentApi.createComment(newComment)
-        setBody("");
-            // .then(()=>{
-            //     props.
-            // })
-            
+            .then(() => {
+                props.getAllComments();
+                setBody("");
+            })
     }
 
     return (
