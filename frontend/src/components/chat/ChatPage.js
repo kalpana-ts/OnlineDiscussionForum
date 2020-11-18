@@ -1,67 +1,55 @@
-import React, { useEffect, useState } from "react";
-import UserApi from '../../api/UserApi';
+import React, { useState } from "react";
 
-function ChatPage() {
+// Components
+import Inbox from './Inbox';
+import SentMessages from './SentMessages';
+import NewMessageForm from "./NewMessageForm";
 
-    const [ listOfUsers, setListOfUsers ] = useState([])
-    const [ message, setMessage ] = useState("");
+function ChatPage({user}) {
 
-    useEffect(() => {
-        function getAllUsers() {
-            UserApi.getAllUsers()
-                .then((res) => {
-                    setListOfUsers(res.data)
-                })
-        }
+    const [ newMessageComponentOn, setNewMessageComponentOn ] = useState(false);
+    const [ inboxComponentOn, setInboxComponentOn ] = useState(false);
+    const [ sentMessagesComponentOn, setSentMessagesComponentOn ] = useState(false);
 
-        getAllUsers();
-    }, [])
-
-
-    const sendMessage = (e) => {
-        if (message === "") {return;}
-
-        const recipient = document.getElementById("recipient-form").value;
-
-        console.log('sending', message, 'to', recipient)
-        setMessage("");
+    const handleClickCompose = () => {
+        setNewMessageComponentOn(!newMessageComponentOn)
+        setInboxComponentOn(false)
+        setSentMessagesComponentOn(false)
+    }
+    const handleClickInbox = () => {
+        setNewMessageComponentOn(false)
+        setInboxComponentOn(!inboxComponentOn)
+        setSentMessagesComponentOn(false)
+    }
+    const handleClickSent = () => {
+        setNewMessageComponentOn(false)
+        setInboxComponentOn(false)
+        setSentMessagesComponentOn(!sentMessagesComponentOn)
     }
 
     return (
         <div>
-            <h2>Send a direct message</h2>
-            <div className="card">
-                <p className="card-title">What do you want to tell?</p>
-                <div className="form-group">
-                    <textarea className="form-control"
-                        placeholder="Say Hi!"
-                        value={message}
-                        onChange={event => setMessage(event.target.value)}/>
-                </div>
-
-                <div className="form-group">
-                    <select id="recipient-form">
-                        <option value={null}>Recipient</option>
-                            { listOfUsers.length === 0 ? "" :
-                            listOfUsers
-                                .map((user) => 
-                                    <option key={user.id} value={user.name}>
-                                        {user.name}
-                                    </option>
-                                ) 
-                            }
-                    </select>
-                </div>
-
-                <div className="form-group">
-                    <button className="btn btn-primary" onClick={sendMessage}>Send</button>
-                </div>
+            <div className="container d-flex justify-content-around mb-4">
+                <button 
+                    className="btn btn-sm btn-primary"
+                    onClick={handleClickCompose}
+                >Compose</button>
+                <button 
+                    className="btn btn-sm btn-primary"
+                    onClick={handleClickInbox}
+                >Inbox</button>
+                <button 
+                    className="btn btn-sm btn-primary"
+                    onClick={handleClickSent}
+                >Sent</button>
             </div>
 
             <div>
-                <h3>Your messages</h3>
-                <p> Need a route between user and personnal messages</p>
+                { newMessageComponentOn && <NewMessageForm  user={user} /> }
+                { inboxComponentOn && <Inbox user={user} /> }
+                { sentMessagesComponentOn && <SentMessages user={user} /> }
             </div>
+
         </div>
     );
 }
