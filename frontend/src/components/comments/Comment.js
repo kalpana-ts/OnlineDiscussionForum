@@ -1,23 +1,19 @@
-import React from 'react'
+import React from "react";
 
-
-function Comment() {
-
-    // const {comment, deleteComment} = props;
-
+function Comment(comment) {
     return (
-        <div className="comment">
-            <div className="comment-content">
-                {/* <Button 
-                    content="x" type="del" 
-                    onClick={() => deleteComment(comment.id)} 
-                />  */}
+        <div className="card mt-3">
+            <div className="card-body">
                 <p>
-                    { comment.body }
+                
+                        Comment : {comment.commentBody} <br/>
+                        WrittenBy : {comment.user.name}
                 </p>
-                <p className="author">
-                    {comment.authorName}
-                </p>
+                
+              
+                <button className="btn btn-danger" >Delete</button>
+               
+                
             </div>
         </div>
     );

@@ -47,6 +47,10 @@ function App() {
                         <PostsPage user={user} />
                     </Route>
 
+                    {/*<Route path="/posts:id">
+                        <CommentsPage user={user}/>
+                    </Route>*/}
+
                     <Route path="/chat">
                         <ChatPage user={user} />
                     </Route>

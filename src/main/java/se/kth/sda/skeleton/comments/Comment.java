@@ -19,6 +19,13 @@ public class Comment {
     @ManyToOne
     private User user;
 
+    public Comment(Long id, String commentBody, Post post, User user) {
+        this.id = id;
+        this.commentBody = commentBody;
+        this.post = post;
+        this.user = user;
+    }
+
     public Post getPost() {
         return post;
     }
@@ -35,10 +42,7 @@ public class Comment {
         this.user = user;
     }
 
-    public Comment(Long id, String commentBody) {
-        this.id = id;
-        this.commentBody = commentBody;
-    }
+
 
     public Comment() {
     }

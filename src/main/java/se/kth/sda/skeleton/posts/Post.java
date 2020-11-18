@@ -4,6 +4,7 @@ import se.kth.sda.skeleton.comments.Comment;
 import se.kth.sda.skeleton.user.User;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,7 +17,7 @@ public class Post {
     private String postBody;
 
     @OneToMany
-    private List<Comment> comments;
+    private List<Comment> comments = new ArrayList<>();
 
     @ManyToOne
     private User user;
