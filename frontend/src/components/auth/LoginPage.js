@@ -4,6 +4,7 @@ import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 
 import './Login.css';
+import logo from '../../assets/logo.png';
 
 function LoginPage() {
     const login = async (loginData) => {
@@ -24,9 +25,11 @@ function LoginPage() {
         <div className="wrapper">
             <div className="container">
                 <div className="row mt-4">
-                    <div className="col-md-6" style={{  }}>
-                        <h1>Community</h1>
-                        <p></p>
+                    <div className="col-md-6" >
+                        <div className="branding" >
+                            <img className="brandLogo" src= {logo} alt="logo" />
+                            <h1 className="brandName" >community</h1>
+                        </div>
                     </div>
 
                     <div className="col-md-6">
