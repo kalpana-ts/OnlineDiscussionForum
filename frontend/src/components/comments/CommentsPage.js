@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import CommentApi from "../../api/CommentApi";
 
 import Comment from "./Comment";
@@ -7,16 +6,21 @@ import CommentForm from "./CommentForm";
 
 function CommentsPage ({post,user}) {
 
-    const [ comments, setComments] = useState([]); // All comments for this post
+    const [ comments, setComments] = useState([]);
 
-    function getAllComments(postId) {
-        CommentApi.getAllCommentsByPostId(postId)
-            .then((res) => {
-                //const newComments = [...comments]
-                //newComments.push(res.data)
-                console.log(res.data);
-                //setComments(res.data);
+    useEffect(() => {
+        getAllComments();
+    }, [])
+
+    function getAllComments() {
+        console.log("from commentsP:" + post.id);
+        CommentApi.getAllCommentsByPostId(post.id)
+            .then((c) => {
+                // const newComments = [...comments]
+                // newComments.push(c.data)
+                setComments(c.data);
             })
+            // console.log("from getallbypost",comments);
     }
 
     useEffect(() => {

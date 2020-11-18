@@ -7,19 +7,17 @@ function CommentForm(props) {
 
     function createComment() {
         if (body === "") { return;}
-
         const newComment = { 
             commentBody: body,
             user: props.user,
             post: props.post
         };
-
+        console.log(newComment);
         CommentApi.createComment(newComment)
-            .then(()=>{
+            .then(() => {
                 props.getAllComments();
                 setBody("");
             })
-            
     }
 
     return (

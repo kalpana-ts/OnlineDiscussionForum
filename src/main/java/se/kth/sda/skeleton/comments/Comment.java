@@ -6,6 +6,7 @@ import se.kth.sda.skeleton.user.User;
 import javax.persistence.*;
 
 @Entity
+
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +20,7 @@ public class Comment {
     @ManyToOne
     private User user;
 
-    public Comment(Long id, String commentBody, Post post, User user) {
+    public Comment(Long id, String commentBody,Post post,User user) {
         this.id = id;
         this.commentBody = commentBody;
         this.post = post;
