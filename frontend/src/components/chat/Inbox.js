@@ -1,4 +1,6 @@
-import React, {useState}  from "react";
+import React, {useState, useEffect}  from "react";
+import MessageApi from '../../api/MessageApi';
+
 
 // Components
 import Message from './Message'
@@ -7,16 +9,16 @@ function Inbox({user}) {
 
     const [ messages, setMessages ] = useState([]);
 
-    // function getAllMessages() {
-    //     MessagesApi.getAllMessagesByUserId(user.id)
-    //         .then((res) => {
-    //             setMessages(res.data);
-    //         })
-    // }
+    function getAllMessages() {
+        MessageApi.getAllMessagesByRecipientId(user.id)
+            .then((res) => {
+                setMessages(res.data);
+            })
+    }
 
-    // useEffect(() => {
-    //     getAllMessages();
-    // }, [])
+    useEffect(() => {
+        getAllMessages();
+    }, [])
 
     const deleteMessage = () => {
         console.log('delete');

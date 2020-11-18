@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import UserApi from '../../api/UserApi';
+import MessageApi from '../../api/MessageApi';
 
 
 function NewMessageForm({user}) {
@@ -20,22 +21,21 @@ function NewMessageForm({user}) {
         getAllUsers();
     }, [])
 
-    const sendMessage = (e) => {
+    const sendMessage = () => {
         if (message === "") {return;}
         const newMessage = {
-            subject: subject,
+            msgSubject: subject,
             recipient: listOfUsers.find((user) => user.name = recipient),
-            message: message,
+            msgBody: message,
             sender: user
         }
 
-        console.log('sending', newMessage)
-        setMessage("");
-        setRecipient("")
-    }
-
-    const handleChooseDropDown = (userName) => {
-        setRecipient(userName);
+        MessageApi.createMessage(newMessage)
+            .then(() => {
+                console.log('sent')
+                setMessage("");
+                setRecipient("")
+            })
     }
 
     return (
@@ -68,7 +68,7 @@ function NewMessageForm({user}) {
                                         .map((user) => 
                                             <button key={user.id}
                                                 className="dropdown-item" type="button"
-                                                onClick={() => {handleChooseDropDown(user.name)}}
+                                                onClick={() => {setRecipient(user.name)}}
                                             >   {user.name}
                                             </button>
                                         ) 

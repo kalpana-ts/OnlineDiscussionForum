@@ -2,8 +2,6 @@ import React from "react";
 
 function Comment({comment, deleteComment, user}) {
 
-    console.log(comment);
-
     return (
         <div className="card mt-3">
             <div className="card-body">
