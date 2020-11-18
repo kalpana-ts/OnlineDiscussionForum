@@ -24,6 +24,7 @@ public class CommentController {
         }
     }
 
+
     @GetMapping("/userid")
     public List<Comment> getAllByUserId(@RequestParam(required = false) Long userId) {
         if (userId == null) {

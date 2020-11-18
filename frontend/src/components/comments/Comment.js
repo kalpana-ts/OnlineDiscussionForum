@@ -1,23 +1,23 @@
-import React from 'react'
+import React from "react";
 
-
-function Comment() {
-
-    // const {comment, deleteComment} = props;
+function Comment({comment, deleteComment, user}) {
 
     return (
-        <div className="comment">
-            <div className="comment-content">
-                {/* <Button 
-                    content="x" type="del" 
-                    onClick={() => deleteComment(comment.id)} 
-                />  */}
-                <p>
-                    { comment.body }
-                </p>
-                <p className="author">
-                    {comment.authorName}
-                </p>
+        <div className="card mt-3">
+            <div className="card-title bg-secondary text-white m-0 p-1">
+                {comment.user.name + ' >>> '} 
+            </div>
+            <div className="card-body">
+                    {comment.commentBody} <br/>
+            </div>
+            <div className="text-right">
+                {(user.name === comment.user.name)?
+                    <button
+                        className="btn btn-sm btn-danger mr-sm-2"
+                        onClick={() => deleteComment(comment.id)}
+                    >Delete</button> 
+                    : null 
+                } 
             </div>
         </div>
     );

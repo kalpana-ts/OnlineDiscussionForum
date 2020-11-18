@@ -5,18 +5,17 @@ import {
     Route,
 } from "react-router-dom";
 
-// Import custom styles for our application
 import './App.css';
 
 import Auth from './services/Auth';
 import UserApi from './api/UserApi';
-import Navbar from "./components/layout/Navbar";
 
 // Import pages
 import LoginPage from "./components/auth/LoginPage";
 import HomePage from './components/home/HomePage';
 import PostsPage from "./components/posts/PostsPage";
 import ChatPage from './components/chat/ChatPage';
+import Navbar from "./components/layout/Navbar";
 
 function App() {
     const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -46,7 +45,7 @@ function App() {
                     <Route path="/posts">
                         <PostsPage user={user} />
                     </Route>
-
+                    
                     <Route path="/chat">
                         <ChatPage user={user} />
                     </Route>

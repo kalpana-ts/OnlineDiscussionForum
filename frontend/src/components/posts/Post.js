@@ -1,43 +1,82 @@
-import React ,{useState} from "react";
+import React from "react";
 
+import CommentsPage from "../comments/CommentsPage";
 
 // A single post, here you can create your post as you want it to be
 function Post(props) {
 
-    const [ comments, setComments] = useState(props.post.comments); // All comment for this post
-
     return (
-        <div>
-            <div>
-                Post : {props.post.postBody}
-            </div>
+        <>
             <div className="card mt-2">
+                <div className="card-title bg-secondary text-white m-0 p-1">
+                    {props.post.user.name + ' => ' + props.post.postTitle}
+                </div>
                 <div className="card-body">
-                    <p>
-                        Title : {props.post.postTitle} <br/>
-                        Post : {props.post.postBody}
-                    </p>
-                
-                {/*
-                    comments.map((comment) =>
-                        <Comment />
+                    {props.post.postBody}
+                </div>
+                <div className="text-right">
+                    {props.post.user.name === props.user.name ? (
+                        <button
+                            className="btn btn-danger mr-sm-2"
+                            onClick={() => props.deletePost(props.post.id)}
+                        >
+                            Delete
+                        </button>
                     )
-                */}
-                <button 
-                    className="btn btn-danger mr-sm-2" 
-                    onClick={() => props.deletePost(props.post.id)}
-                >Delete</button> 
-                
-                {/* <Link to={'/posts/' + id}>  Do you mean a link to see the entire post ? 
-                Maybe we don't need to make a new API call, but we can definitely open it into a new window
-                Look at bootstrap 'Modal', it is pretty cool and you don't need a new page */}
-                <button className="btn btn-primary"> View</button>
-                {/* </Link> */}
+                        : null
+                    }
+                    <button
+                        type="button"
+                        className="btn btn-primary"
+                        data-toggle="modal"
+                        data-target={`#commentsPage${props.post.id}`}
+                    >
+                        Comment
+                </button>
                 </div>
             </div>
-        </div>
+
+
+            <div
+                className="modal fade"
+                id={`commentsPage${props.post.id}`}
+                tabIndex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalLongTitle"
+                aria-hidden="true"
+            >
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <div className="modal-title m-0 p-1 font-weight-bold">
+                                {props.post.user.name + ' => ' + props.post.postTitle}
+                            </div>
+                            <button
+                                type="button"
+                                className="close"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                            >
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <CommentsPage key={props.post.id} post={props.post} user={props.user} />
+                        </div>
+                        <div class="modal-footer bg-secondary">
+                            <button
+                                type="button"
+                                className="btn btn-light"
+                                data-dismiss="modal"
+                            >
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
     );
 }
 
 export default Post;
-

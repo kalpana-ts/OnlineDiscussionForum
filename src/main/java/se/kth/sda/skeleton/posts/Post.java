@@ -4,9 +4,11 @@ import se.kth.sda.skeleton.comments.Comment;
 import se.kth.sda.skeleton.user.User;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +18,7 @@ public class Post {
     private String postBody;
 
     @OneToMany
-    private List<Comment> comments;
+    private List<Comment> comments = new ArrayList<>();
 
     @ManyToOne
     private User user;
@@ -29,10 +31,11 @@ public class Post {
         this.user = user;
     }
 
-    public Post(Long id, String postTitle, String postBody) {
+    public Post(Long id, String postTitle, String postBody,User user) {
         this.id = id;
         this.postTitle = postTitle;
         this.postBody = postBody;
+        this.user = user;
     }
 
     public Post() {

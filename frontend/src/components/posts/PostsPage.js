@@ -8,6 +8,25 @@ import Post from './Post';
 function PostsPage({user}) {
     
     const [ posts, setPosts ] = useState([]) // Will contain all posts
+    const [ newPostComponentOn, setNewPostComponentOn ] = useState(false);
+    const [ allPostsOn, setAllPostsOn ] = useState(true);
+    const [ onlyUserPostsOn, setOnlyUserPostsOn ] = useState(false);
+
+    const handleClickCreate = () => {
+        setNewPostComponentOn(!newPostComponentOn)
+        setAllPostsOn(false)
+        setOnlyUserPostsOn(false)
+    }
+    const handleClickAll = () => {
+        setNewPostComponentOn(false)
+        setAllPostsOn(!allPostsOn)
+        setOnlyUserPostsOn(false)
+    }
+    const handleClickMyPosts = () => {
+        setNewPostComponentOn(false)
+        setAllPostsOn(false)
+        setOnlyUserPostsOn(!onlyUserPostsOn)
+    }
 
     function getAllPosts() {
         PostsApi.getAllPosts()
@@ -29,18 +48,36 @@ function PostsPage({user}) {
             })
     }
 
-    console.log(posts)
-
     return (
         <div className="PostPage">
-            <PostForm posts={posts} getAllPosts={getAllPosts} user={user}/>
+            <div className="container d-flex justify-content-around mb-4">
+                <button 
+                    className="btn btn-sm btn-primary"
+                    onClick={handleClickCreate}
+                >Create Post</button>
+                <button 
+                    className="btn btn-sm btn-primary"
+                    onClick={handleClickAll}
+                >All Posts</button>
+                <button 
+                    className="btn btn-sm btn-primary"
+                    onClick={handleClickMyPosts}
+                >My Posts</button>
+            </div>
+
+            { newPostComponentOn && <PostForm posts={posts} getAllPosts={getAllPosts} user={user}/> }
+
+            { !newPostComponentOn && (allPostsOn || onlyUserPostsOn) &&
             <div>
                 { posts.length === 0 ? "No posts yet" :
-                    posts.map((post) => 
+                    posts
+                        .filter((post) => allPostsOn ? true : post.user.id === user.id )
+                        .map((post) => 
                         <Post key={post.id} post={post} user={user} deletePost={deletePost}/>
                     )
                 }
             </div>
+            }
         </div>
     );
 }
