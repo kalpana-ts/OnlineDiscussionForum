@@ -2,23 +2,26 @@ import React, { useEffect, useState } from "react";
 
 import CommentApi from "../../api/CommentApi";
 
-
-import PostsApi from "../../api/PostsApi";
 import Comment from "./Comment";
 import CommentForm from "./CommentForm";
 
-function CommentsPage ({post,user}) {
+function CommentsPage ({postId,user}) {
+
     const [ comments, setComments] = useState([]); // All comments for this post
+
+    console.log(comments);
+    function getAllComments() {
+        CommentApi.getAllCommentsByPostId(postId)
+            .then((res) => {
+                const newComments = [...comments]
+                newComments.push(res.data)
+                setComments(newComments);
+            })
+    }
+
     useEffect(() => {
         getAllComments();
     }, [])
-
-    function getAllComments() {
-        CommentApi.getAllCommentsByPostId(post.postId)
-            .then((data) => {
-                setComments(data.data);
-            })
-    }
 
     // Delete Comment is at this level because if we delete the post directly inside itself, it will generate issues
     function deleteComment(commentId) {
@@ -30,7 +33,7 @@ function CommentsPage ({post,user}) {
     
     return(
         <div className="CommentsPage">
-            <CommentForm comments={comments} getAllComments={getAllComments} user={user}/>
+            <CommentForm getAllComments={getAllComments} user={user}/>
             <div>
                 { comments.length === 0 ? "No comments yet" :
                     comments.map((comment) => 

@@ -2,11 +2,12 @@ import React from "react";
 import CommentApi from "../../api/CommentApi";
 
 function CommentForm(props) {
+
     const [body, setBody] = React.useState("");
 
     function createComment() {
         if (body === "") { return;}
-        // Invoke the passed in event callback
+
         const newComment = { 
             commentBody: body,
             user: props.user,
@@ -14,10 +15,10 @@ function CommentForm(props) {
         };
 
         CommentApi.createComment(newComment)
-        setBody("");
-            // .then(()=>{
-            //     props.
-            // })
+            .then(()=>{
+                props.getAllComments();
+                setBody("");
+            })
             
     }
 
