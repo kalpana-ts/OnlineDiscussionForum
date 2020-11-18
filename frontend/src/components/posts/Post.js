@@ -5,6 +5,8 @@ import CommentsPage from "../comments/CommentsPage";
 // A single post, here you can create your post as you want it to be
 function Post(props) {
 
+    console.log(props.post.id)
+
     return (
         <div>
             <div>
@@ -26,12 +28,12 @@ function Post(props) {
                         : null 
                     }
 
-                    <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#commentsPage">
+                    <button type="button" className="btn btn-primary" data-toggle="modal" data-target={`#commentsPage${props.post.id}`}>
                        Comment
                     </button>
 
                    
-                    <div className="modal fade" id="commentsPage" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div className="modal fade" id={`commentsPage${props.post.id}`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                         <div className="modal-dialog" role="document">
                             <div className="modal-content">
                                 <div className="modal-header">
@@ -41,7 +43,7 @@ function Post(props) {
                                     </button>
                                 </div>
                                 <div className="modal-body">
-                                    <CommentsPage postId={props.post.id} user={props.user}/>
+                                    <CommentsPage post={props.post} user={props.user}/>
                                 </div>
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>

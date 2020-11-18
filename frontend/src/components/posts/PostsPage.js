@@ -29,8 +29,6 @@ function PostsPage({user}) {
             })
     }
 
-    console.log(posts)
-
     return (
         <div className="PostPage">
             <PostForm posts={posts} getAllPosts={getAllPosts} user={user}/>
