@@ -1,6 +1,3 @@
-
-## sneha
-
 # Online Forum - Team 9
 
 ### What to do ? 
