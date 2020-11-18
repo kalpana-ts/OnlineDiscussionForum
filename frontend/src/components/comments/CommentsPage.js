@@ -13,14 +13,10 @@ function CommentsPage ({post,user}) {
     }, [])
 
     function getAllComments() {
-        console.log("from commentsP:" + post.id);
         CommentApi.getAllCommentsByPostId(post.id)
             .then((c) => {
-                // const newComments = [...comments]
-                // newComments.push(c.data)
                 setComments(c.data);
             })
-            // console.log("from getallbypost",comments);
     }
 
     useEffect(() => {
@@ -36,7 +32,7 @@ function CommentsPage ({post,user}) {
     }
     
     return(
-        <div className="CommentsPage">
+        <div>
             <CommentForm post={post} getAllComments={getAllComments} user={user}/>
             <div>
                 { comments.length === 0 ? "No comments yet" :

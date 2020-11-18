@@ -7,7 +7,7 @@ import NewMessageForm from "./NewMessageForm";
 
 function ChatPage({user}) {
 
-    const [ newMessageComponentOn, setNewMessageComponentOn ] = useState(false);
+    const [ newMessageComponentOn, setNewMessageComponentOn ] = useState(true);
     const [ inboxComponentOn, setInboxComponentOn ] = useState(false);
     const [ sentMessagesComponentOn, setSentMessagesComponentOn ] = useState(false);
 

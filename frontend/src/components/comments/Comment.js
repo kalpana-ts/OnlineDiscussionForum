@@ -1,22 +1,23 @@
 import React from "react";
 
 function Comment({comment, deleteComment, user}) {
+
     return (
-        
         <div className="card mt-3">
+            <div className="card-title bg-secondary text-white m-0 p-1">
+                {comment.user.name + ' >>> '} 
+            </div>
             <div className="card-body">
-                <p>
-                        Comment : {comment.commentBody} <br/>
-                        WrittenBy : {comment.user.name}
-                </p>
-                
+                    {comment.commentBody} <br/>
+            </div>
+            <div className="text-right">
                 {(user.name === comment.user.name)?
                     <button
-                        className="btn btn-danger mr-sm-2"
+                        className="btn btn-sm btn-danger mr-sm-2"
                         onClick={() => deleteComment(comment.id)}
                     >Delete</button> 
-                    : null } 
-                
+                    : null 
+                } 
             </div>
         </div>
     );

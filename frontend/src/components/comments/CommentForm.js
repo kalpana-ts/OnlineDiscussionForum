@@ -12,7 +12,6 @@ function CommentForm(props) {
             user: props.user,
             post: props.post
         };
-        console.log(newComment);
         CommentApi.createComment(newComment)
             .then(() => {
                 props.getAllComments();
@@ -21,27 +20,26 @@ function CommentForm(props) {
     }
 
     return (
-        <div className="card">
+        <div className="card mt-3">
+        <div className="card-title bg-primary text-white m-0 p-1">
+            Write you comment Here
+        </div>
         <div className="card-body">
-            <h4 className="card-title" >Write your comment </h4>
-            <div>
-                <div className="form-group">
-                    <textarea 
-                        className="form-control"
-                        value={body}
-                        onChange={e => setBody(e.target.value)} />
-                </div>
-
-                <div className="form-group">
-                    <button 
-                        className="btn btn-primary" 
-                        onClick={createComment}>
-                        Comment
-                    </button>
-                </div>
-            </div>
+            <textarea 
+                className="form-control"
+                value={body}
+                onChange={e => setBody(e.target.value)} 
+            />
+        </div>
+        <div className="text-right">
+            <button 
+                className="btn btn-sm btn-primary" 
+                onClick={createComment}>
+                Send
+            </button>
         </div>
     </div>
+
     );
 }
 
