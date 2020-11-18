@@ -1,7 +1,7 @@
 package se.kth.sda.skeleton.user;
 
 import org.hibernate.validator.constraints.Length;
-import se.kth.sda.skeleton.Chat.Chat;
+import se.kth.sda.skeleton.message.Message;
 import se.kth.sda.skeleton.comments.Comment;
 import se.kth.sda.skeleton.posts.Post;
 
@@ -38,7 +38,7 @@ public class User {
     private List<Comment> comments;
 
     @OneToMany
-    private List<Chat> chats;
+    private List<Message> messages;
 
     // Hibernate needs a default constructor to function
     public User() {}
