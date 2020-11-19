@@ -84,7 +84,7 @@ function PostsPage({user}) {
         <div className="PostPage">
             <div className="container d-flex justify-content-around mb-4">
                 <button 
-                    className="btn btn-sm btn-primary"
+                    className="btn  btn-primary"
                     onClick={handleClickCreate}
                 >Create Post</button>
                 <button 

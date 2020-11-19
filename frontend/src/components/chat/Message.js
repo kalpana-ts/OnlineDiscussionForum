@@ -1,19 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
+import { FaEnvelope } from 'react-icons/fa';
+import MessageApi from '../../api/MessageApi';
 
 
-function Message({message}) {
+function Message({message, inbox, getAllAgain}) {
+
+    const [ bodyIsOpen, setBodyIsOpen ] = useState(false)
+
+    const handleOpenMessage = () => { 
+        setBodyIsOpen(!bodyIsOpen);
+
+        if (inbox) {
+            if (!message.readByRecipient) {
+
+                const newMessage = {...message}
+                newMessage.readByRecipient = true;
+
+                MessageApi.updateMessage(newMessage)
+                .then(() => {
+                    getAllAgain();
+                })
+            }
+        } else {
+            if (!message.readBySender) {
+
+                const newMessage = {...message}
+                newMessage.readBySender = true;
+
+                MessageApi.updateMessage(newMessage)
+                .then(() => {
+                    getAllAgain();
+                })
+            }           
+        }
+    }
 
     return (
-        <div className="card mt-3">
-            <div className="card-title bg-secondary text-white m-0 p-1">
-                {message.sender.name + ' >>> ' + message.recipient.name + ' => '
-                + message.msgSubject} 
+        <div className="d-flex align-items-center justi">
+            <div className={`p-2 rounded-circle mr-3 mt-2 text-white 
+                    ${inbox 
+                        ? (message.readByRecipient ? "bg-success" : "bg-danger") 
+                        : message.readBySender ? "bg-success" : "bg-danger"}`
+                    }>
+                <FaEnvelope />
             </div>
-            <div className="card-body">
-                    {message.msgBody} <br/>
-            </div>
-            <div className="text-right">
-                <button className="btn btn-danger btn-sm" >Delete</button>
+            <div className="card mt-3 w-100">
+                <div className="card-title bg-secondary text-white m-0 p-1 d-flex justify-content-between">
+                    <div 
+                        className="mw-75" 
+                        onClick={handleOpenMessage}
+                        style={{cursor: 'pointer'}}
+                    >
+                        { inbox ? message.sender.name + ' >> ' :
+                        ' >> ' + message.recipient.name + ' | ' } {message.msgSubject} 
+                    </div>
+                    <button className="btn btn-danger btn-sm align-self-start" >Delete</button>
+                </div>
+                {
+                    bodyIsOpen && 
+                    <div className="card-body">
+                            {message.msgBody} <br/>
+                    </div>
+                }
             </div>
         </div>
     );
