@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import CommentsPage from "../comments/CommentsPage";
+import "./Post.css";
 
 // A single post, here you can create your post as you want it to be
 function Post(props) {
@@ -11,14 +12,14 @@ function Post(props) {
 
   return (
     <>
-      <div className="card mt-4">
+      <div className="card mt-4 postbody">
         <div className="card-title bg-secondary text-white m-0 p-1">
           <div
             className="mw-75"
             onClick={handleOpenMessage}
             style={{ cursor: "pointer" }}
           >
-            {props.post.user.name + " => " + props.post.postTitle}
+            {props.post.user.name + " : " + props.post.postTitle}
           </div>
         </div>
         {bodyIsOpen && <div><div className="card-body">{props.post.postBody}</div>

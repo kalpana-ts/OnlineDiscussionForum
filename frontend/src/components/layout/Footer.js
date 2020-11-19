@@ -7,7 +7,7 @@ function Footer() {
     return(
         <footer class="contactUs">
             <ul class="contactUs-list">
-                <li>Creators:@team-wd-9</li>
+                <li>By @team-wd-9</li>
                 <li>
                     <a href="https://www.community.com/privacy/explanation/">Privacy</a></li>
                 <li>
