@@ -29,7 +29,7 @@ function PostForm(props){
     }    
 
     return (
-        <div className="card">
+        <div className="container col-sm-12 col-md-10 col-lg-8">
             <p className="card-title">Create a new Post</p>
             <div className="form-group">
                 <input className="form-control"

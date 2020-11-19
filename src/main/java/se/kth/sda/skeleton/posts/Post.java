@@ -19,7 +19,7 @@ public class Post {
     private Integer likes;
     private Integer disLikes; 
 
-    @OneToMany
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
 
     @ManyToOne

@@ -25,7 +25,7 @@ function NewMessageForm({user}) {
         if (message === "") {return;}
         const newMessage = {
             msgSubject: subject,
-            recipient: listOfUsers.find((user) => user.name = recipient),
+            recipient: listOfUsers.find((user) => user.name === recipient),
             msgBody: message,
             sender: user
         }
