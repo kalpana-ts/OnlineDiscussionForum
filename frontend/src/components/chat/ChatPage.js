@@ -7,8 +7,8 @@ import NewMessageForm from "./NewMessageForm";
 
 function ChatPage({user}) {
 
-    const [ newMessageComponentOn, setNewMessageComponentOn ] = useState(true);
-    const [ inboxComponentOn, setInboxComponentOn ] = useState(false);
+    const [ newMessageComponentOn, setNewMessageComponentOn ] = useState(false);
+    const [ inboxComponentOn, setInboxComponentOn ] = useState(true);
     const [ sentMessagesComponentOn, setSentMessagesComponentOn ] = useState(false);
 
     const handleClickCompose = () => {
@@ -30,18 +30,20 @@ function ChatPage({user}) {
     return (
         <div>
             <div className="container d-flex justify-content-around mb-4">
-                <button 
-                    className="btn btn-sm btn-primary"
-                    onClick={handleClickCompose}
-                >Compose</button>
-                <button 
-                    className="btn btn-sm btn-primary"
-                    onClick={handleClickInbox}
-                >Inbox</button>
-                <button 
-                    className="btn btn-sm btn-primary"
-                    onClick={handleClickSent}
-                >Sent</button>
+                <div class="btn-group" role="group">
+                    <button 
+                        className="btn btn-info"
+                        onClick={handleClickCompose}
+                    >Compose</button>
+                    <button 
+                        className="btn btn-info"
+                        onClick={handleClickInbox}
+                    >Inbox</button>
+                    <button 
+                        className="btn btn-info"
+                        onClick={handleClickSent}
+                    >Sent</button>
+                </div>
             </div>
 
             <div>
