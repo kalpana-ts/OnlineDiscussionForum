@@ -26,13 +26,16 @@ function SentMessages({user}) {
     }
 
     return (
-        <div>
+        <div className="container col-sm-12 col-md-10 col-lg-8">
             
             <div>
-                <h3>Your messages sent, {user.name}</h3>
+                <h3 className="font-italic">Your messages sent, {user.name}</h3>
                 { messages.length === 0 ? "You talk with nobody" :
                     messages.map((msg) => 
-                        <Message key={msg.id} message={msg} deleteMessage={deleteMessage}/>
+                        <Message key={msg.id} message={msg} 
+                            deleteMessage={deleteMessage} 
+                            getAllAgain={getAllMessages}
+                        />
                     )
                 }
             </div>

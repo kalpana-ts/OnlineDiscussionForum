@@ -25,6 +25,10 @@ public class MessageService {
         return repo.save(newMessage);
     }
 
+    public Message update(Message updatedMessage) {
+        return repo.save(updatedMessage);
+    }
+
     public void delete(Long id) {
         repo.deleteById(id);
     }

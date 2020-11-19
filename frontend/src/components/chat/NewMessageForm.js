@@ -34,13 +34,14 @@ function NewMessageForm({user}) {
             .then(() => {
                 console.log('sent')
                 setMessage("");
-                setRecipient("")
+                setRecipient("");
+                setSubject("");
             })
     }
 
     return (
-        <div className="container">
-            <h2>Send a direct message</h2>
+        <div className="container col-sm-12 col-md-10 col-lg-8">
+            <h3 className="font-italic">Send a direct message</h3>
 
             <div className="card p-3">
                 <p className="card-title">What do you want to tell?</p>
@@ -76,7 +77,7 @@ function NewMessageForm({user}) {
                             </div>
                         </div>
                     </div>
-                    <input type="text" className="form-control" placeholder={recipient} disabled/>
+                    <div className="text-muted ml-3 mt-1 font-weight-bold">{recipient} </div>
                 </div>
               
              
@@ -92,8 +93,8 @@ function NewMessageForm({user}) {
                     ></textarea>
                 </div>
 
-                <div className="form-group">
-                    <button className="btn btn-primary" onClick={sendMessage}>Send</button>
+                <div className="form-group text-right">
+                    <button className="btn btn-sm btn-primary" onClick={sendMessage}>Send</button>
                 </div>
             </div>
         </div>

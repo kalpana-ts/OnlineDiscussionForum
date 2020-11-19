@@ -17,8 +17,12 @@ class MessageApi {
         return Api.get('/messages/'+id);
     }
 
-    createMessage(post) {
-        return Api.post('/messages', post);
+    createMessage(msg) {
+        return Api.post('/messages', msg);
+    }
+
+    updateMessage(newMsg) {
+        return Api.put('/messages', newMsg)
     }
 
     deleteMessage(id) {

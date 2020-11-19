@@ -21,6 +21,12 @@ public class Message {
     @ManyToOne
     private User recipient;
 
+    @Column(name = "readbysender")
+    private Boolean readBySender;
+
+    @Column(name = "readbyrecipient")
+    private Boolean readByRecipient;
+
 
     public Message() {
     }
@@ -29,6 +35,8 @@ public class Message {
         this.id = id;
         this.msgBody = msgBody;
         this.msgSubject = msgSubject;
+        this.readBySender = false;
+        this.readByRecipient = false;
     }
 
     public Long getId() {
@@ -69,6 +77,22 @@ public class Message {
 
     public void setRecipient(User recipient) {
         this.recipient = recipient;
+    }
+
+    public Boolean getReadByRecipient() {
+        return this.readByRecipient;
+    }
+
+    public void setReadByRecipient(Boolean read) {
+        this.readByRecipient = read;
+    }
+
+    public Boolean getReadBySender() {
+        return this.readBySender;
+    }
+
+    public void setReadBySender(Boolean read) {
+        this.readBySender = read;
     }
 
 }

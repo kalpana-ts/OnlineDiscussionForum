@@ -18,6 +18,15 @@ function Inbox({user}) {
 
     useEffect(() => {
         getAllMessages();
+        const chatTimer = setInterval(() => {
+            console.log("get all messages")
+            getAllMessages();
+        }, 5000);
+
+        return () => {
+            clearInterval(chatTimer)
+        }
+    
     }, [])
 
     const deleteMessage = () => {
@@ -25,13 +34,16 @@ function Inbox({user}) {
     }
 
     return (
-        <div>
+        <div className="container col-sm-12 col-md-10 col-lg-8">
             
             <div>
-                <h3>Your messages received, {user.name}</h3>
+                <h3 className="font-italic">Your messages received, {user.name}</h3>
                 { messages.length === 0 ? "No body talks with you" :
                     messages.map((msg) => 
-                        <Message key={msg.id} message={msg} deleteMessage={deleteMessage}/>
+                        <Message key={msg.id} message={msg} 
+                            deleteMessage={deleteMessage} inbox={true}
+                            getAllAgain={getAllMessages}
+                        />
                     )
                 }
             </div>
