@@ -21,7 +21,7 @@ function Inbox({user}) {
         const chatTimer = setInterval(() => {
             console.log("get all messages")
             getAllMessages();
-        }, 5000);
+        }, 2000);
 
         return () => {
             clearInterval(chatTimer)
@@ -29,8 +29,11 @@ function Inbox({user}) {
     
     }, [])
 
-    const deleteMessage = () => {
-        console.log('delete');
+    const deleteMessage = (messageId) => {
+        MessageApi.deleteMessage(messageId)
+        .then(() => {
+            getAllMessages();
+        })
     }
 
     return (
@@ -42,7 +45,7 @@ function Inbox({user}) {
                     messages.map((msg) => 
                         <Message key={msg.id} message={msg} 
                             deleteMessage={deleteMessage} inbox={true}
-                            getAllAgain={getAllMessages}
+                            getAllAgain={getAllMessages} user={user}
                         />
                     )
                 }

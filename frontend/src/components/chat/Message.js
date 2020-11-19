@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import { FaEnvelope } from 'react-icons/fa';
 import MessageApi from '../../api/MessageApi';
 
 
-function Message({message, inbox, getAllAgain}) {
+function Message({message, inbox, getAllAgain, deleteMessage}) {
 
     const [ bodyIsOpen, setBodyIsOpen ] = useState(false)
 
@@ -54,7 +54,13 @@ function Message({message, inbox, getAllAgain}) {
                         { inbox ? message.sender.name + ' >> ' :
                         ' >> ' + message.recipient.name + ' | ' } {message.msgSubject} 
                     </div>
-                    <button className="btn btn-danger btn-sm align-self-start" >Delete</button>
+                    { (inbox && message.recipient.email === user.email) || 
+                    (!inbox && message.sender.email === user.email) ?
+                    <button 
+                        className="btn btn-danger btn-sm align-self-start"
+                        onClick={() => deleteMessage(message.id)} 
+                    >Delete</button>
+                    : null}
                 </div>
                 {
                     bodyIsOpen && 
