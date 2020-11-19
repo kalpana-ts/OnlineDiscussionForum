@@ -10,6 +10,7 @@ import './App.css';
 
 import Auth from './services/Auth';
 import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 
 // Import pages
 import LoginPage from "./components/auth/LoginPage";
@@ -24,7 +25,7 @@ function App() {
   const loggedInRouter = (
             <Router>
                 <Navbar onLogout={() => Auth.logout()} />
-
+                
                 <div className="container mt-5">
                     <Switch>
                         <Route path="/posts">
@@ -39,7 +40,10 @@ function App() {
                           <HomePage/>
                         </Route>
                     </Switch>
+                    
                 </div>
+                
+                <Footer />
             </Router>
   );
 
