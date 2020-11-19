@@ -11,7 +11,7 @@ function Comment({comment, deleteComment, user}) {
                     {comment.commentBody} <br/>
             </div>
             <div className="text-right">
-                {(user.name === comment.user.name)?
+                {(user.email === comment.user.email)?
                     <button
                         className="btn btn-sm btn-danger mr-sm-2"
                         onClick={() => deleteComment(comment.id)}

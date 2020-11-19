@@ -16,6 +16,8 @@ public class Post {
     private String postTitle;
     @Column(columnDefinition = "TEXT")
     private String postBody;
+    private Integer likes;
+    private Integer disLikes; 
 
     @OneToMany
     private List<Comment> comments = new ArrayList<>();
@@ -31,14 +33,32 @@ public class Post {
         this.user = user;
     }
 
-    public Post(Long id, String postTitle, String postBody,User user) {
+    public Post(Long id, String postTitle, String postBody,Integer likes,Integer disLikes,User user) {
         this.id = id;
         this.postTitle = postTitle;
         this.postBody = postBody;
+        this.likes = likes;
+        this.disLikes = disLikes;
         this.user = user;
     }
 
     public Post() {
+    }
+
+    public Integer getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Integer likes) {
+        this.likes = likes;
+    }
+
+    public Integer getDisLikes() {
+        return disLikes;
+    }
+
+    public void setDisLikes(Integer disLikes) {
+        this.disLikes = disLikes;
     }
 
     public Long getId() {

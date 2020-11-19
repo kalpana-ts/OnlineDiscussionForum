@@ -5,6 +5,8 @@ class PostsApi {
         return Api.get('/posts');
     }
 
+    
+
     getPostById(id) {
         return Api.get('/posts/'+id);
     }
