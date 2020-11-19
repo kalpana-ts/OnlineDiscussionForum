@@ -16,6 +16,7 @@ import HomePage from './components/home/HomePage';
 import PostsPage from "./components/posts/PostsPage";
 import ChatPage from './components/chat/ChatPage';
 import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 
 function App() {
     const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -55,6 +56,7 @@ function App() {
                     </Route>
                 </Switch>
             </div>
+            <Footer />
         </Router>
     );
 

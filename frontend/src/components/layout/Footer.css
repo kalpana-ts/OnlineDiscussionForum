@@ -1,15 +1,21 @@
 .contactUs {
     background-color: #c55533;
+    padding: 0.25px 0px 0.25px 0px;
+    margin-top: 1em;
+    bottom:0;
+    position: absolute;
+    width: 100%;
 }
+
  .contactUs-list {
     display: flex;
     justify-content: center;
     list-style: none;
     margin-top: 8px;
-    color: rgb(250, 248, 248);
+    color: rgba(255,255,255,.5);
 }
 .contactUs .contactUs-list a{
-    color: rgb(250, 248, 248);
+    color: rgba(255,255,255,.5);
     padding: 16px;
     
 }
