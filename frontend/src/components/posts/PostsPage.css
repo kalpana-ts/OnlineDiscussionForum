@@ -13,6 +13,6 @@
 .post-div {
     margin: auto;
     max-width: 87%;
-    max-height: 37em;
-    overflow: auto;
+    max-height: 35rem;
+    overflow: scroll;
 }
