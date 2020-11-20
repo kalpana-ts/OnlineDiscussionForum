@@ -1,18 +1,10 @@
-.PostPage .btn-secondary {
+.ChatPage .btn-secondary {
     border-radius: 0.2;
     background-color: #489fb5!important;
     width: 30rem!important;
     border-color: #a3d0da!important;
 }
 
-.PostPage .container {
+.ChatPage .container {
     max-width: 90%!important;
-}
-
-
-.post-div {
-    margin: auto;
-    max-width: 87%;
-    max-height: 70vh;
-    overflow: scroll;
 }

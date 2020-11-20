@@ -32,8 +32,8 @@ function CommentForm(props) {
           />
         </div>
         <div className="text-right">
-          <button className="btn btn-sm btn-secondary" onClick={createComment}>
-            Send
+          <button className="btn btn-sm btn-light" onClick={createComment}>
+            <i class="fas fa-share-square"></i>
           </button>
         </div>
       </div>

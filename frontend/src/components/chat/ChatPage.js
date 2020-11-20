@@ -1,15 +1,16 @@
 import React, { useState } from "react";
+import "./ChatPage.css";
 
 // Components
 import Inbox from './Inbox';
 import SentMessages from './SentMessages';
 import NewMessageForm from "./NewMessageForm";
 
-function ChatPage({user}) {
+function ChatPage({ user }) {
 
-    const [ newMessageComponentOn, setNewMessageComponentOn ] = useState(false);
-    const [ inboxComponentOn, setInboxComponentOn ] = useState(true);
-    const [ sentMessagesComponentOn, setSentMessagesComponentOn ] = useState(false);
+    const [newMessageComponentOn, setNewMessageComponentOn] = useState(false);
+    const [inboxComponentOn, setInboxComponentOn] = useState(true);
+    const [sentMessagesComponentOn, setSentMessagesComponentOn] = useState(false);
 
     const handleClickCompose = () => {
         setNewMessageComponentOn(!newMessageComponentOn)
@@ -28,8 +29,19 @@ function ChatPage({user}) {
     }
 
     return (
-        <div>
-            <div className="container d-flex justify-content-around mb-4">
+        <div className="ChatPage">
+            <div class="container d-flex justify-content-around mb-4 btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option1" autocomplete="off" checked onClick={handleClickCompose} /> Compose
+                </label>
+                <label class="btn btn-secondary active">
+                    <input type="radio" name="options" id="option2" autocomplete="off" onClick={handleClickInbox} /> Inbox
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option3" autocomplete="off" onClick={handleClickSent} /> Sent
+                </label>
+            </div>
+            {/* <div className="container d-flex justify-content-around mb-4">
                 <div className="btn-group" role="group">
                     <button 
                         className="btn btn-info"
@@ -44,12 +56,12 @@ function ChatPage({user}) {
                         onClick={handleClickSent}
                     >Sent</button>
                 </div>
-            </div>
+            </div> */}
 
             <div>
-                { newMessageComponentOn && <NewMessageForm  user={user} /> }
-                { inboxComponentOn && <Inbox user={user} /> }
-                { sentMessagesComponentOn && <SentMessages user={user} /> }
+                {newMessageComponentOn && <NewMessageForm user={user} />}
+                {inboxComponentOn && <Inbox user={user} />}
+                {sentMessagesComponentOn && <SentMessages user={user} />}
             </div>
 
         </div>

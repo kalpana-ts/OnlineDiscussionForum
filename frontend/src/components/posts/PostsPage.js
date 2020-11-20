@@ -39,6 +39,13 @@ function PostsPage({user}) {
     // Load all Posts once, when opening Page
     useEffect(() => {
         getAllPosts();
+        const postTimer = setInterval(() => {
+            getAllPosts();
+        }, 2000);
+
+        return () => {
+            clearInterval(postTimer)
+        }
     }, [])
 
     
@@ -94,7 +101,7 @@ function PostsPage({user}) {
                 >All Posts</button>
                 <button 
                     className="btn btn-sm btn-info"
-                    onClick={handleClickMyPosts} aria-pressed="true"
+                    onClick={handleClickMyPosts} aria-pressed="true" 
                 >My Posts</button>
             </div> */}
             <div class="container d-flex justify-content-around mb-4 btn-group btn-group-toggle" data-toggle="buttons">
@@ -118,6 +125,7 @@ function PostsPage({user}) {
                 { posts.length === 0 ? "No posts yet" :
                     posts
                         .filter((post) => allPostsOn ? true : post.user.id === user.id )
+                        .sort((p1, p2) => p1.id > p2.id ? -1 : 1)
                         .map((post) => 
                         <Post key={post.id} post={post} user={user} deletePost={deletePost} 
                         likePost={likePost} disLikePost={disLikePost}/>

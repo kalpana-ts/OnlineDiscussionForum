@@ -51,13 +51,15 @@ function Message({message, inbox, getAllAgain, deleteMessage, user}) {
                         onClick={handleOpenMessage}
                         style={{cursor: 'pointer'}}
                     >
-                        { inbox ? message.sender.name + ' >> ' :
-                        ' >> ' + message.recipient.name + ' | ' } {message.msgSubject} 
+                        { inbox ? message.sender.name + ' : ' :
+                        ' Sent to : ' + message.recipient.name + ' | ' } {message.msgSubject} 
                     </div>
                     <button 
                         className="btn btn-danger btn-sm align-self-start"
                         onClick={() => deleteMessage(message.id)} 
-                    >Delete</button>
+                    >
+                        <i class="fas fa-trash"></i>
+                    </button>
                     {/* { ((inbox && message.recipient.email === user.email) || 
                     (!inbox && message.sender.email === user.email)) ?
                     <button 

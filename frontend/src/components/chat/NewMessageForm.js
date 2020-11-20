@@ -60,8 +60,8 @@ function NewMessageForm({user}) {
                 <div className="input-group mb-3">
                     <div className="input-group-prepend">
                         <div className="dropdown">
-                            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
-                                To who ? 
+                            <button className="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
+                                To whom ? 
                             </button>
                             <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
                                 { listOfUsers.length === 0 ? "" :
@@ -94,7 +94,9 @@ function NewMessageForm({user}) {
                 </div>
 
                 <div className="form-group text-right">
-                    <button className="btn btn-sm btn-primary" onClick={sendMessage}>Send</button>
+                    <button className="btn btn-light" onClick={sendMessage}>
+                        <i class="fas fa-share-square"></i>
+                    </button>
                 </div>
             </div>
         </div>

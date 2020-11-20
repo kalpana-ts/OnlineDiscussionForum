@@ -41,7 +41,7 @@ function Inbox({user}) {
             
             <div>
                 <h3 className="font-italic">Your messages received, {user.name}</h3>
-                { messages.length === 0 ? "No body talks with you" :
+                { messages.length === 0 ? "No messages" :
                     messages.map((msg) => 
                         <Message key={msg.id} message={msg} 
                             deleteMessage={deleteMessage} inbox={true}

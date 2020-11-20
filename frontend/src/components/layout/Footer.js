@@ -5,7 +5,7 @@ import './Footer.css';
 
 function Footer() {
     return(
-        <footer class="contactUs">
+        <footer className="contactUs">
             <ul class="contactUs-list">
                 <li>By @team-wd-9</li>
                 <li>

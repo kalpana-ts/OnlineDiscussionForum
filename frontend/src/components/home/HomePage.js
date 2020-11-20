@@ -5,7 +5,7 @@ import homeImage from '../../assets/home.png';
 
 function HomePage() {
     return (
-        <div className="card">
+        <div className="card HomePage">
             <div className="card-body">
                 <img className="homeImage" src= {homeImage} alt="home image of group of people" />
                 <h4 className="card-title">What is community?</h4>

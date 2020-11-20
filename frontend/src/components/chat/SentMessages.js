@@ -33,7 +33,7 @@ function SentMessages({user}) {
             
             <div>
                 <h3 className="font-italic">Your messages sent, {user.name}</h3>
-                { messages.length === 0 ? "You talk with nobody" :
+                { messages.length === 0 ? "No messages" :
                     messages.map((msg) => 
                         <Message key={msg.id} message={msg} 
                             deleteMessage={deleteMessage} 
