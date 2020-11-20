@@ -21,8 +21,11 @@ function SentMessages({user}) {
     }, [])
 
 
-    const deleteMessage = () => {
-        console.log('delete');
+    const deleteMessage = (messageId) => {
+        MessageApi.deleteMessage(messageId)
+        .then(() => {
+            getAllMessages(user.id);
+        })
     }
 
     return (
