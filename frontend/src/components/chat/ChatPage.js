@@ -30,7 +30,7 @@ function ChatPage({user}) {
     return (
         <div>
             <div className="container d-flex justify-content-around mb-4">
-                <div class="btn-group" role="group">
+                <div className="btn-group" role="group">
                     <button 
                         className="btn btn-info"
                         onClick={handleClickCompose}

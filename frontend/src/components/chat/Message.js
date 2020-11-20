@@ -1,9 +1,9 @@
-import React, { useReducer, useState } from "react";
+import React, { useState } from "react";
 import { FaEnvelope } from 'react-icons/fa';
 import MessageApi from '../../api/MessageApi';
 
 
-function Message({message, inbox, getAllAgain, deleteMessage}) {
+function Message({message, inbox, getAllAgain, deleteMessage, user}) {
 
     const [ bodyIsOpen, setBodyIsOpen ] = useState(false)
 
@@ -18,7 +18,7 @@ function Message({message, inbox, getAllAgain, deleteMessage}) {
 
                 MessageApi.updateMessage(newMessage)
                 .then(() => {
-                    getAllAgain();
+                    getAllAgain(message.recipient.id);
                 })
             }
         } else {
@@ -29,7 +29,7 @@ function Message({message, inbox, getAllAgain, deleteMessage}) {
 
                 MessageApi.updateMessage(newMessage)
                 .then(() => {
-                    getAllAgain();
+                    getAllAgain(message.sender.id);
                 })
             }           
         }
@@ -54,13 +54,17 @@ function Message({message, inbox, getAllAgain, deleteMessage}) {
                         { inbox ? message.sender.name + ' >> ' :
                         ' >> ' + message.recipient.name + ' | ' } {message.msgSubject} 
                     </div>
-                    { (inbox && message.recipient.email === user.email) || 
-                    (!inbox && message.sender.email === user.email) ?
                     <button 
                         className="btn btn-danger btn-sm align-self-start"
                         onClick={() => deleteMessage(message.id)} 
                     >Delete</button>
-                    : null}
+                    {/* { ((inbox && message.recipient.email === user.email) || 
+                    (!inbox && message.sender.email === user.email)) ?
+                    <button 
+                        className="btn btn-danger btn-sm align-self-start"
+                        onClick={() => deleteMessage(message.id)} 
+                    >Delete</button>
+                    : null} */}
                 </div>
                 {
                     bodyIsOpen && 

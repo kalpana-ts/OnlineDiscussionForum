@@ -9,18 +9,18 @@ function Inbox({user}) {
 
     const [ messages, setMessages ] = useState([]);
 
-    function getAllMessages() {
-        MessageApi.getAllMessagesByRecipientId(user.id)
+    function getAllMessages(userId) {
+        MessageApi.getAllMessagesByRecipientId(userId)
             .then((res) => {
                 setMessages(res.data);
             })
     }
 
     useEffect(() => {
-        getAllMessages();
+        getAllMessages(user.id);
         const chatTimer = setInterval(() => {
             console.log("get all messages")
-            getAllMessages();
+            getAllMessages(user.id);
         }, 2000);
 
         return () => {
@@ -32,7 +32,7 @@ function Inbox({user}) {
     const deleteMessage = (messageId) => {
         MessageApi.deleteMessage(messageId)
         .then(() => {
-            getAllMessages();
+            getAllMessages(user.id);
         })
     }
 
