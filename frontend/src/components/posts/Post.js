@@ -95,7 +95,7 @@ function Post(props) {
                 user={props.user}
               />
             </div>
-            <div class="modal-footer bg-secondary">
+            {/* <div class="modal-footer bg-secondary">
               <button
                 type="button"
                 className="btn btn-light"
@@ -103,7 +103,7 @@ function Post(props) {
               >
                 Close
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
