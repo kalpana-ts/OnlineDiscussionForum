@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Merienda:wght@700&display=swap');
+.brandName {
+    color: #c55533;
+    font-family: 'Merienda', cursive;
+    font-size: 4.5rem; 
+}
+.brandLogo {
+    width: 50%;
+    margin-left: 60px;
+}
+.brandLogo {
+    margin: auto;
+    padding-top: 64px;
+}
+/* ***************** */
+/* Desktop */
+@media (min-width: 750px) {
+    .brandName {
+        /* text-align: left;
+        margin-top: 160px; */
+    }
+}

@@ -1,25 +1,22 @@
-making some changes in readme
-=======
-
-## sneha
-
 # Online Forum - Team 9
 
 ### What to do ? 
 
-1. Backend routes:
-    - create routes for posts / comments -> 'Post&Comments part' - Radha
-2. Frontend theme:
-    - Theme/ Home page - Sneha
-    - Navbar/ Main style - 
-    - Post page style 
-        - create post style, buttons, etc.. - Kalpana
-    - Link between Front and back
-        - Do something when click on button (create, delete, etc..) - Jeremy
+ - More style:
+    - Home page ->  Images? other ? 
+    - Post and comments style -> Smaller button ? other ? 
+ - Extras:
+    - Chat ?
+        - Route Direct messages 
+        - Style
+    - Like/ Dislikes
+    - Sorting / Pagination / Searching
+ - Deploy website online
 
 
+=========================================================================
 
-# My Online Forum
+## My Online Forum
 
 Your task for this part of the module will be to take the Spring + React template
 application you have received and turn it into an online discussion forum! As you

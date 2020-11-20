@@ -1,0 +1,16 @@
+.card-body {
+    text-align: center;
+}
+.card-body {
+    color:#264653;
+}
+.homeImage {
+    padding: 0;
+    width: 30%;
+}
+.home-body {
+    padding-top: 10px;
+}
+.home-body .tagLine {
+    color:#264653;
+}

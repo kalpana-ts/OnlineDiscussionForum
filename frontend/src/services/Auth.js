@@ -5,6 +5,16 @@ const tokenKey = "_token";
 // Disclaimer: This simple auth implementation is for development purposes only.
 
 class Auth {
+
+    // Add a way here to access user Mail.
+    getUserMail = () => {
+        try {
+            return JSON.parse(atob(this._getToken().split('.')[1])).email;
+        } catch (e) {
+            return null;
+        }
+    }
+
     setLoggedIn = () => {};
 
     isLoggedIn() {

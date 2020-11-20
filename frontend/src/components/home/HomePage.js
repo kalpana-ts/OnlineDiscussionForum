@@ -1,18 +1,22 @@
 import React from "react";
 
+import './HomePage.css';
+import homeImage from '../../assets/home.png';
+
 function HomePage() {
     return (
         <div className="card">
             <div className="card-body">
-                <h4 className="card-title">SDA starter template</h4>
-                <p>This starter template is based on Spring, PostgreSQL, React, React router and Axios. Check the following links for documentation and guides:</p>
-                <ul>
-                    <li><a href="https://spring.io/projects/spring-boot">Spring</a></li>
-                    <li><a href="https://www.postgresql.org">PostgreSQL</a></li>
-                    <li><a href="https://reactjs.org">React</a></li>
-                    <li><a href="https://reacttraining.com/react-router/web/guides/quick-start">React Router</a></li>
-                    <li><a href="https://github.com/axios/axios">Axios</a></li>
-                </ul>
+                <img className="homeImage" src= {homeImage} alt="home image of group of people" />
+                <h4 className="card-title">What is community?</h4>
+                <div className="home-body">
+                    <p>Community is a group of people that care about each other and feel they belong together.</p>
+                    <p>or</p>
+                    <p>Communities may share a sense of place situated in a given geographical area or in virtual space through communication platforms.</p>
+                    <p>or</p>
+                    <p>A community is a group of people that care about the same goal.</p>
+                    <p className= "tagLine">We bring to you, your community..</p>
+                </div>
             </div>
         </div>
     );
