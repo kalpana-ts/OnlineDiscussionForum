@@ -31,7 +31,7 @@ function Post(props) {
                 className="btn btn-light"
                 onClick={() => props.likePost(props.post)}
               >
-                <i class="fas fa-thumbs-up"></i><sup>{props.post.disLikes}</sup>
+                <i class="fas fa-thumbs-up"></i><sup>{props.post.likes}</sup>
               </button>
 
               <button
