@@ -1,0 +1,8 @@
+.postbody {
+    margin-top: 0.5rem!important;
+    
+}
+.postbody .p-1 {
+    border-radius: 4px!important;
+    padding: 1.25rem!important;
+}

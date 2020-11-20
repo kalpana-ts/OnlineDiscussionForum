@@ -18,7 +18,7 @@ function HomePage() {
                     <p className= "tagLine">We bring to you, your community..</p>
                 </div>
             </div>
-        </div>
+        </div>        
     );
 }
 

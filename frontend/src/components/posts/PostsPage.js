@@ -4,6 +4,7 @@ import PostsApi from '../../api/PostsApi';
 // Components
 import PostForm from "./PostForm";
 import Post from './Post';
+import "./PostsPage.css";
 
 function PostsPage({user}) {
     
@@ -82,25 +83,38 @@ function PostsPage({user}) {
 
     return (
         <div className="PostPage">
-            <div className="container d-flex justify-content-around mb-4">
+            {/* <div className="container d-flex justify-content-around mb-4">
                 <button 
-                    className="btn  btn-primary"
-                    onClick={handleClickCreate}
+                    className="btn btn-sm btn-info"
+                    onClick={handleClickCreate} aria-pressed="true"
                 >Create Post</button>
                 <button 
-                    className="btn btn-sm btn-primary"
-                    onClick={handleClickAll}
+                    className="btn btn-sm btn-info"
+                    onClick={handleClickAll} aria-pressed="true"
                 >All Posts</button>
                 <button 
-                    className="btn btn-sm btn-primary"
-                    onClick={handleClickMyPosts}
+                    className="btn btn-sm btn-info"
+                    onClick={handleClickMyPosts} aria-pressed="true"
                 >My Posts</button>
+            </div> */}
+            <div class="container d-flex justify-content-around mb-4 btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option1" autocomplete="off" checked onClick={handleClickCreate}/> Create Post
+                </label>
+                <label class="btn btn-secondary active">
+                    <input type="radio" name="options" id="option2" autocomplete="off" onClick={handleClickAll} /> All Posts
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option3" autocomplete="off" onClick={handleClickMyPosts}/> My Posts
+                </label>
             </div>
+
+
 
             { newPostComponentOn && <PostForm posts={posts} getAllPosts={getAllPosts} user={user}/> }
 
             { !newPostComponentOn && (allPostsOn || onlyUserPostsOn) &&
-            <div>
+            <div className= "post-div">
                 { posts.length === 0 ? "No posts yet" :
                     posts
                         .filter((post) => allPostsOn ? true : post.user.id === user.id )

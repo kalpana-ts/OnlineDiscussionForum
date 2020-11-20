@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import CommentsPage from "../comments/CommentsPage";
+import "./Post.css";
 
 // A single post, here you can create your post as you want it to be
 function Post(props) {
@@ -11,26 +12,26 @@ function Post(props) {
 
   return (
     <>
-      <div className="card mt-4">
+      <div className="card mt-4 postbody">
         <div className="card-title bg-secondary text-white m-0 p-1">
           <div
             className="mw-75"
             onClick={handleOpenMessage}
             style={{ cursor: "pointer" }}
           >
-            {props.post.user.name + " => " + props.post.postTitle}
+            {props.post.user.name + " : " + props.post.postTitle}
           </div>
         </div>
         {bodyIsOpen && <div><div className="card-body">{props.post.postBody}</div>
         <div className="text-right">
+        <div>
           {props.post.user.email != props.user.email ? (
-            <div>
-              <button
+              <span><button
                 type="button"
                 className="btn btn-light"
                 onClick={() => props.likePost(props.post)}
               >
-                <i class="far fa-thumbs-up">{props.post.likes}</i>
+                <i class="fas fa-thumbs-up"></i><sup>{props.post.disLikes}</sup>
               </button>
 
               <button
@@ -38,26 +39,27 @@ function Post(props) {
                 className="btn btn-light"
                 onClick={() => props.disLikePost(props.post)}
               >
-                <i class="far fa-thumbs-down">{props.post.disLikes}</i>
+                <i class="fas fa-thumbs-down"></i><sup>{props.post.disLikes}</sup>
               </button>
-            </div>
+            </span>
           ) : null}
           {props.post.user.email === props.user.email ? (
             <button
-              className="btn btn-danger mr-sm-2"
+              className="btn btn-light"
               onClick={() => props.deletePost(props.post.id)}
             >
-              Delete
+              <i class="fas fa-trash"></i>
             </button>
           ) : null}
           <button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-light"
             data-toggle="modal"
             data-target={`#commentsPage${props.post.id}`}
           >
-            Comment
+            <i class="fas fa-comment-alt"></i>
           </button>
+          </div>
         </div>
         </div>
 }
@@ -75,7 +77,7 @@ function Post(props) {
           <div className="modal-content">
             <div className="modal-header">
               <div className="modal-title m-0 p-1 font-weight-bold">
-                {props.post.user.name + " => " + props.post.postTitle}
+                {props.post.user.name + " : " + props.post.postTitle}
               </div>
               <button
                 type="button"

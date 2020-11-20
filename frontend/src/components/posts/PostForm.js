@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PostsApi from '../../api/PostsApi';
-
+import './PostForm.css';
 
 // Form to create a new Post
 function PostForm(props){
@@ -30,14 +30,14 @@ function PostForm(props){
 
     return (
         <div className="container col-sm-12 col-md-10 col-lg-8">
-            <p className="card-title">Create a new Post</p>
+            {/* <p className="card-title">Create a new Post</p> */}
             <div className="form-group">
                 <input className="form-control"
                     placeholder="Title"
                     value={title}
                     onChange={event => setTitle(event.target.value)}
                 />
-                <textarea className="form-control"
+                <textarea className="form-control post-content"
                     placeholder={`What's on your mind, ${props.user.name}?`}
                     value={body}
                     onChange={event => setBody(event.target.value)}
