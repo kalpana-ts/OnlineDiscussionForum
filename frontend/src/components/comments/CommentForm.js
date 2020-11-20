@@ -20,26 +20,23 @@ function CommentForm(props) {
     }
 
     return (
-        <div className="card mt-3">
-        <div className="card-title bg-primary text-white m-0 p-1">
-            Write your comment Here
+      <div className="card mt-3 text-white">
+        <div className="card-title bg-secondary text-white m-0 p-1">
+          Write your comment here
         </div>
         <div className="card-body">
-            <textarea 
-                className="form-control"
-                value={body}
-                onChange={e => setBody(e.target.value)} 
-            />
+          <textarea
+            className="form-control"
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+          />
         </div>
         <div className="text-right">
-            <button 
-                className="btn btn-sm btn-primary" 
-                onClick={createComment}>
-                Send
-            </button>
+          <button className="btn btn-sm btn-secondary" onClick={createComment}>
+            Send
+          </button>
         </div>
-    </div>
-
+      </div>
     );
 }
 
