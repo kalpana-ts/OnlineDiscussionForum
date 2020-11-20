@@ -31,7 +31,7 @@ function Post(props) {
                 className="btn btn-light"
                 onClick={() => props.likePost(props.post)}
               >
-                <i class="fas fa-thumbs-up"></i><sup>{props.post.disLikes}</sup>
+                <i class="fas fa-thumbs-up"></i><sup>{props.post.likes}</sup>
               </button>
 
               <button
@@ -45,7 +45,7 @@ function Post(props) {
           ) : null}
           {props.post.user.email === props.user.email ? (
             <button
-              className="btn btn-light"
+              className="btn btn-light mr-s"
               onClick={() => props.deletePost(props.post.id)}
             >
               <i class="fas fa-trash"></i>
@@ -73,7 +73,7 @@ function Post(props) {
         aria-labelledby="exampleModalLongTitle"
         aria-hidden="true"
       >
-        <div className="modal-dialog" role="document">
+        <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
           <div className="modal-content">
             <div className="modal-header">
               <div className="modal-title m-0 p-1 font-weight-bold">
@@ -95,7 +95,7 @@ function Post(props) {
                 user={props.user}
               />
             </div>
-            <div class="modal-footer bg-secondary">
+            {/* <div class="modal-footer bg-secondary">
               <button
                 type="button"
                 className="btn btn-light"
@@ -103,7 +103,7 @@ function Post(props) {
               >
                 Close
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
